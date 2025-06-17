@@ -8,29 +8,43 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Animação ao rolar
+// Animação ao rolar (Intersection Observer)
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
+            entry.target.classList.add('is-visible'); // Adiciona uma nova classe para controlar a visibilidade
+        } else {
+            // Opcional: remover a classe se sair da tela para reanimar ao voltar
+            // entry.target.classList.remove('is-visible');
         }
     });
 }, { threshold: 0.1 });
 
+// Observa todos os elementos com a classe 'animate'
 document.querySelectorAll('.animate').forEach(el => {
     observer.observe(el);
 });
 
-// Filtros do portfólio
+// Filtros do portfólio (funcionalidade básica)
 const filterBtns = document.querySelectorAll('.filter-btn');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+        // Remove 'active' de todos os botões e adiciona ao clicado
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         
-        // Simulação de filtragem (em projeto real seria implementada)
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.style.display = 'block';
+        const filterValue = btn.textContent.trim(); // Pega o texto do botão para filtrar
+
+        portfolioItems.forEach(item => {
+            const category = item.querySelector('.portfolio-category').textContent.trim();
+
+            if (filterValue === 'Todos' || category.includes(filterValue)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
         });
     });
 });
@@ -40,15 +54,25 @@ const contactForm = document.getElementById('contactForm');
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Simulação de envio
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData.entries());
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
     
-    // Mostrar alerta
-    alert('Mensagem enviada com sucesso! Entrarei em contato em breve.');
+    submitBtn.textContent = 'Enviando...';
+    submitBtn.disabled = true; // Desabilita o botão para evitar múltiplos envios
     
-    // Resetar formulário
-    contactForm.reset();
+    // Simulação de envio (você pode substituir isso por uma chamada AJAX real)
+    setTimeout(() => {
+        submitBtn.textContent = 'Mensagem Enviada!';
+        submitBtn.style.background = '#28a745'; // Cor de sucesso
+        
+        // Resetar formulário e reativar botão após um tempo
+        setTimeout(() => {
+            contactForm.reset();
+            submitBtn.textContent = originalText;
+            submitBtn.style.background = ''; // Reseta o background
+            submitBtn.disabled = false;
+        }, 2000); // 2 segundos
+    }, 1500); // 1.5 segundos para simular o envio
 });
 
 // Alternar tema escuro
@@ -60,24 +84,20 @@ themeToggle.addEventListener('click', () => {
     if (document.body.classList.contains('dark-theme')) {
         icon.classList.remove('fa-moon');
         icon.classList.add('fa-sun');
-        document.body.style.background = '#0f172a';
-        document.body.style.color = '#f1f5f9';
     } else {
         icon.classList.remove('fa-sun');
         icon.classList.add('fa-moon');
-        document.body.style.background = '';
-        document.body.style.color = '';
     }
 });
 
-// Header scroll effect
+// Efeito de rolagem do cabeçalho
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
     if (window.scrollY > 50) {
         header.style.padding = '10px 0';
         header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
     } else {
-        header.style.padding = '';
-        header.style.boxShadow = '';
+        header.style.padding = '20px 0'; // Volta ao padding original
+        header.style.boxShadow = 'var(--shadow)'; // Volta à sombra original
     }
 });
