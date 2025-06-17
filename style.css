@@ -615,6 +615,13 @@ footer {
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
+    flex-wrap: wrap; /* Adicionado para responsividade no footer */
+    gap: 30px; /* Adicionado para espaçamento em telas menores */
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px; /* Garante que as colunas não fiquem muito pequenas */
 }
 
 .footer-col h3 {
@@ -691,8 +698,17 @@ footer {
 }
 
 .animate {
-    animation: fadeIn 0.8s ease-out forwards;
+    /* Removido o 'animation' direto aqui para ser adicionado via JS */
+    opacity: 0; /* Garante que os elementos começam invisíveis */
+    transform: translateY(20px); /* Garante que os elementos começam um pouco abaixo */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transição para a animação via JS */
 }
+
+.animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* Responsividade */
 @media (max-width: 992px) {
@@ -716,6 +732,30 @@ footer {
     .contact-container {
         flex-direction: column;
     }
+
+    .footer-col {
+        min-width: unset; /* Remove min-width para melhor ajuste em colunas */
+        width: 100%; /* Faz com que cada coluna ocupe a largura total */
+        text-align: center; /* Centraliza o texto no footer responsivo */
+    }
+
+    .footer-col h3::after {
+        left: 50%; /* Centraliza o underline do título */
+        transform: translateX(-50%);
+    }
+
+    .footer-links {
+        padding-left: 0;
+    }
+    
+    .footer-links li {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .footer-links a {
+        justify-content: center; /* Centraliza os ícones e textos dos links */
+    }
 }
 
 @media (max-width: 768px) {
@@ -724,7 +764,7 @@ footer {
     }
     
     .nav-links {
-        display: none;
+        display: none; /* Mantém oculto para menu mobile se for o caso */
     }
     
     .portfolio-grid {
@@ -753,6 +793,92 @@ footer {
     .filters {
         flex-wrap: wrap;
     }
+    .profile-img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .hero-shape {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+/* Tema escuro */
+body.dark-theme {
+    background: #0f172a;
+    color: #f1f5f9;
+}
+
+body.dark-theme::before {
+    opacity: 0.05; /* Ajusta a opacidade da imagem de fundo no tema escuro */
+}
+
+body.dark-theme header {
+    background: rgba(15, 23, 42, 0.95);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .nav-links a {
+    color: #f1f5f9;
+}
+
+body.dark-theme .nav-links a:hover {
+    color: var(--primary);
+}
+
+body.dark-theme .hero-subtitle,
+body.dark-theme .about-text p,
+body.dark-theme .stat-text {
+    color: #cbd5e1;
+}
+
+body.dark-theme .skill,
+body.dark-theme .stat-card,
+body.dark-theme .contact-card,
+body.dark-theme .contact-form,
+body.dark-theme .filter-btn {
+    background: #1e293b;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .form-input {
+    background: #334155;
+    border-color: #475569;
+    color: #f1f5f9;
+}
+
+body.dark-theme .form-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+body.dark-theme .social-link {
+    background: #334155;
+    color: #f1f5f9;
+}
+
+body.dark-theme .social-link:hover {
+    background: var(--primary);
+    color: white;
+}
+
+body.dark-theme .portfolio {
+    background: #121b2b; /* Fundo para a seção de portfólio no tema escuro */
+}
+
+body.dark-theme .portfolio-item {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme footer {
+    background: #0a111f; /* Fundo do footer mais escuro */
+}
+
+body.dark-theme .copyright,
+body.dark-theme .footer-col p,
+body.dark-theme .footer-links a {
+    color: rgba(241, 245, 249, 0.7);
 }
 
 /* Botão tema escuro */
@@ -777,4 +903,9 @@ footer {
 
 .theme-toggle:hover {
     transform: translateY(-5px) rotate(30deg);
+}
+
+/* Ajustes para dark-theme e hover no skill */
+body.dark-theme .skill i {
+    color: var(--primary); /* Garante que o ícone mantenha a cor primária no tema escuro */
 }
