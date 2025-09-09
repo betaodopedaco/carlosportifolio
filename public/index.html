@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaac Newton: O Backend Incrível</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Isaac Newton</h1>
+        <p>Uma demonstração de um backend em Node.js puro</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>Fatos Aleatórios sobre Newton</h2>
+            <button id="fact-btn">Me Dê um Fato Novo</button>
+            <p id="fact-display" class="result-box">Clique no botão para ver um fato aleatório!</p>
+        </section>
+
+        <section class="card">
+            <h2>Calculadora de Gravidade</h2>
+            <p>Calcule a força gravitacional entre dois objetos usando a lei de Newton.</p>
+            <div class="calculator-form">
+                <input type="number" id="mass1" placeholder="Massa do objeto 1 (kg)">
+                <input type="number" id="mass2" placeholder="Massa do objeto 2 (kg)">
+                <input type="number" id="distance" placeholder="Distância entre eles (m)">
+                <button id="gravity-btn">Calcular Força</button>
+            </div>
+            <p id="gravity-display" class="result-box">Insira os valores e clique em calcular.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Servido por um Backend "Incrível" em Node.js</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

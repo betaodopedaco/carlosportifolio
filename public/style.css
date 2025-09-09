@@ -1,0 +1,99 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header, main, footer {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 3em;
+    color: #1c2e3f;
+    margin-bottom: 0;
+}
+
+header p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 25px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #34495e;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.calculator-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+input[type="number"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    width: calc(100% - 26px); /* Account for padding and border */
+}
+
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-left: 5px solid #007bff;
+    min-height: 2em;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1em;
+    word-wrap: break-word;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #888;
+}
