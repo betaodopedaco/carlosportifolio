@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/betaodopedaco/carlosportifolio/issues"
   },
-  "homepage": "https://github.com/betaodopedaco/carlosportifolio#readme"
+  "homepage": "https://github.com/betaodopedaco/carlosportifolio#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
